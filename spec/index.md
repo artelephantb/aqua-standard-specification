@@ -18,21 +18,21 @@ import Webpage;
 const TITLE_TEXT_SIZE = Webpage.px(40);
 const PARAGRAPH_TEXT_SIZE = Webpage.px(16);
 
-const style = {
+const STYLE = {
 	title: <<
 		text(TITLE_TEXT_SIZE) {
 			@% /* Gets from the body of the node */
 		}
 	>>
-}
+};
 
 
-fn main() -> Webpage.page {
-	// Webpage.page(content: Tree, title='My Webpage')
-	return Webpage.page(
+fn main() -> Webpage.Page {
+	// Webpage.Page(content: Tree, title='My Webpage')
+	return Webpage.Page(
 		<<
 			vcon {
-				&style.title { 'Welcome To My Webpage!' }
+				&STYLE.title { 'Welcome To My Webpage!' }
 				text(PARAGRAPH_TEXT_SIZE) {
 					'This is a paragraph.'
 				}
@@ -40,5 +40,36 @@ fn main() -> Webpage.page {
 		>>,
 		title = 'My Very Cool Webpage'
 	)
+}
+```
+
+### Games
+```
+from Game import { Sprite, Vector2, Texture, Keyboard };
+use Process;
+
+
+var imut player_texture = Texture.load('res://');
+//  └─ Make the var immutable (stuck with initial value)
+
+var player_reference: Sprite;
+
+
+fn setup() -> Void {
+	var scene = <<
+		/* sprite(uid: int, pos: Vector2 texture: Texture) */
+		sprite(0, Vector2(0.0, 0.0) player_texture)
+	>>;
+
+	// Process.replace_scene(new_scene: Tree)
+	Process.replace_scene(scene);
+
+	player_reference = Process.get_node_by_id(0);
+}
+
+fn process() -> Void {
+	if Keyboard.is_key_pressed(Keyboard.Keys.SPACE) {
+		player_reference.pos.x += 1;
+	}
 }
 ```
