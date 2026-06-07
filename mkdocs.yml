@@ -1,4 +1,6 @@
 site_name: Aqua Standard Specification
+site_description: Specification for Aqua programming language.
+site_author: Aqua Standard Specification contributers
 
 repo_url: 'https://github.com/artelephantb/aqua-standard-specification/'
 edit_uri: 'blob/main/spec/'
