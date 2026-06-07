@@ -1,0 +1,5 @@
+site_name: Aqua Standard Specification
+theme: readthedocs
+docs_dir: 'spec/'
+nav:
+    - Home: 'index.md'
