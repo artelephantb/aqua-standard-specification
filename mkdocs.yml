@@ -8,3 +8,6 @@ theme: readthedocs
 docs_dir: 'spec/'
 nav:
     - Home: 'index.md'
+
+extra_css:
+    - 'styling/extra.css'
