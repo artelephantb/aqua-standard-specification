@@ -1,5 +1,10 @@
 site_name: Aqua Standard Specification
+
+repo_url: 'https://github.com/artelephantb/aqua-standard-specification/'
+edit_uri: 'blob/main/spec/'
+
 theme: readthedocs
+
 docs_dir: 'spec/'
 nav:
     - Home: 'index.md'
