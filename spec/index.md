@@ -5,3 +5,40 @@ The *Aqua Standard Specification* is the programming language standard for how *
 
 ## Why implement this standard?
 The *Aqua Standard Specification* is designed to have simpler syntax, easily nested data, and customizability for unique use cases.
+
+This standard is made to be customizable. Here are some example use cases for why you should implement this standard:
+
+### Websites
+```
+import Webpage;
+
+
+// Webpage.px(amount: int)
+//         └─ An amount counted in pixels
+const TITLE_TEXT_SIZE = Webpage.px(40);
+const PARAGRAPH_TEXT_SIZE = Webpage.px(16);
+
+const style = {
+	title: <<
+		text(TITLE_TEXT_SIZE) {
+			@% /* Gets from the body of the node */
+		}
+	>>
+}
+
+
+fn main() -> Webpage.page {
+	// Webpage.page(content: Tree, title='My Webpage')
+	return Webpage.page(
+		<<
+			vcon {
+				&style.title { 'Welcome To My Webpage!' }
+				text(PARAGRAPH_TEXT_SIZE) {
+					'This is a paragraph.'
+				}
+			}
+		>>,
+		title = 'My Very Cool Webpage'
+	)
+}
+```
