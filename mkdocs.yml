@@ -5,7 +5,9 @@ site_author: Aqua Standard Specification contributers
 repo_url: 'https://github.com/artelephantb/aqua-standard-specification/'
 edit_uri: 'blob/main/spec/'
 
-theme: readthedocs
+theme:
+  name: readthedocs
+  logo: 'img/logo.svg'
 
 docs_dir: 'spec/'
 nav:

@@ -1,7 +1,11 @@
 .wy-nav-top {
-	background-color: rgb(21, 189, 223);
+	background-color: rgb(12, 233, 237);
 }
 
 .wy-side-nav-search {
-	background-color: rgb(21, 189, 223);
+	background-color: rgb(12, 233, 237);
+}
+
+.wy-side-nav-search a img.logo {
+	height: 70px;
 }
