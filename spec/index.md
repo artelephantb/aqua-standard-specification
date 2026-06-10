@@ -1,12 +1,12 @@
 # Aqua Standard Specification
-The *Aqua Standard Specification* is the programming language standard for how *Aqua files* (files with the `.aqu` and `.aqua` file extensions) are structured, defined, and how they behave.
+The *Aqua Standard Specification* is a  programming language standard for how *Aqua files* (files with the `.aqu` and `.aqua` file extensions) are structured, defined, and behaved.
 
-*Aqua files* are scripts, this means that they run processes and evolve outputs; For example, if you have a variable called `x` with a value of `10`, at runtime, it can be manipulated and changed to have a value of `20`.
+The *Aqua Programming Language* (defined through this specification) is mostly a general-purpose programming language; the main functionalities of this language, however, is to provide for a lower entry and a better experiance for but not limited to game developement, game engines, webpages, web-browsers, advanced slideshows, software with GUIs, and GUI frameworks.
 
 ## Why implement this standard?
-The *Aqua Standard Specification* is designed to have simpler syntax, easily nested data, and customizability for unique use cases.
+The problem with with most programming languages is that they are not made with the thought of advanced UIs or GUIs, and many that are supposed to be made specifically for those purposes end up becoming too bare-bones, too confusing, and too difficult to use. The Aqua Programming Language aims to fix these problems, introducing better functionality, less confusing syntax, and simple to understand rules.
 
-This standard is made to be customizable. Here are some example use cases for why you should implement this standard:
+At the heart of it, this standard is still made to be able to fit any need. Some different use cases may include:
 
 ### Websites
 ```
