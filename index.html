@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Specification for Aqua programming language." /><meta name="author" content="Aqua Standard Specification contributers" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>Aqua Standard Specification</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="styling/extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "About";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".">
+          <img src="img/logo.svg" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">About</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#why-implement-this-standard">Why implement this standard?</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#websites">Websites</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#games">Games</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">Aqua Standard Specification</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">About</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/artelephantb/aqua-standard-specification/blob/main/spec/index.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="aqua-standard-specification">Aqua Standard Specification</h1>
+<p>The <em>Aqua Standard Specification</em> is a  programming language standard for how <em>Aqua files</em> (files with the <code>.aqu</code> and <code>.aqua</code> file extensions) are structured, defined, and behaved.</p>
+<p>The <em>Aqua Programming Language</em> (defined through this specification) is mostly a general-purpose programming language; the functionalities within this language are, however, more targeted to providing a lower entry and a better experiance for but not limited to the uses of game developement, game engines, webpages, web-browsers, advanced slideshows, software with GUIs, and GUI frameworks.</p>
+<h2 id="why-implement-this-standard">Why implement this standard?</h2>
+<p>The problem with with most programming languages is that they are not made with the thought of advanced UIs or GUIs, and many that are supposed to be made specifically for those purposes end up becoming too bare-bones, too confusing, and too difficult to use. The Aqua Programming Language aims to fix these problems, introducing better functionality, less confusing syntax, and simple to understand rules.</p>
+<p>At the heart of it, this standard is still made to be able to fit any need. Some different use cases may include:</p>
+<h3 id="websites">Websites</h3>
+<pre><code>import Webpage;
+
+
+// Webpage.px(amount: int)
+//         └─ An amount counted in pixels
+const TITLE_TEXT_SIZE = Webpage.px(40);
+const PARAGRAPH_TEXT_SIZE = Webpage.px(16);
+
+const STYLE = {
+    title: &lt;! // Kinda like a macro!
+        text(TITLE_TEXT_SIZE) {
+            $^body /* Gets from the body of the node */
+        }
+    !&gt;
+};
+
+
+fn main() -&gt; Webpage.Page {
+    // Webpage.Page(content: Tree, title='My Webpage')
+    return Webpage.Page(
+        &lt;&lt;
+            vcon {
+                !STYLE.title { 'Welcome To My Webpage!' }
+                text(PARAGRAPH_TEXT_SIZE) {
+                    'This is a paragraph.'
+                }
+            }
+        &gt;&gt;,
+        title = 'My Very Cool Webpage'
+    )
+}
+</code></pre>
+<h3 id="games">Games</h3>
+<pre><code>from Game import { Sprite, Vector2, Texture, Keyboard };
+use Process;
+
+
+var imut player_texture = Texture.load('res://');
+//  └─ Make the var immutable (stuck with initial value)
+
+var player_reference: Sprite;
+
+
+fn setup() -&gt; Void {
+    var scene = &lt;&lt;
+        /* sprite(uid: int, pos: Vector2 texture: Texture) */
+        sprite(0, Vector2(0.0, 0.0) player_texture)
+    &gt;&gt;;
+
+    // Process.replace_scene(new_scene: Tree)
+    Process.replace_scene(scene);
+
+    player_reference = Process.get_node_by_id(0);
+}
+
+fn process() -&gt; Void {
+    if Keyboard.is_key_pressed(Keyboard.Keys.SPACE) {
+        player_reference.pos.x += 1;
+    }
+}
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>&copy; 2026, licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"></p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/artelephantb/aqua-standard-specification/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = ".";</script>
+    <script src="js/theme_extra.js"></script>
+    <script src="js/theme.js"></script>
+      <script src="search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-06-10 11:46:46.191510+00:00
+-->
