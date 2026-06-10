@@ -19,11 +19,11 @@ const TITLE_TEXT_SIZE = Webpage.px(40);
 const PARAGRAPH_TEXT_SIZE = Webpage.px(16);
 
 const STYLE = {
-	title: <<
+	title: <! // Kinda like a macro!
 		text(TITLE_TEXT_SIZE) {
-			@% /* Gets from the body of the node */
+			$^body /* Gets from the body of the node */
 		}
-	>>
+	!>
 };
 
 
@@ -32,7 +32,7 @@ fn main() -> Webpage.Page {
 	return Webpage.Page(
 		<<
 			vcon {
-				&STYLE.title { 'Welcome To My Webpage!' }
+				!STYLE.title { 'Welcome To My Webpage!' }
 				text(PARAGRAPH_TEXT_SIZE) {
 					'This is a paragraph.'
 				}
